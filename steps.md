@@ -1,0 +1,3 @@
+- Need to implement the python script as described in the paper
+- Need to find a dataset, or at least a way to generate a dataset, that can be used to test the python script
+- Can start with a small sample and compare it to the paper result table (manually create table)
