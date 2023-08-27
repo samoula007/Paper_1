@@ -2,7 +2,7 @@
 - Attempting to implement the following paper: https://arxiv.org/pdf/2308.12606.pdf
 - I am not affiliated with the authors of the paper, nor do I claim any rights to the paper. I am simply implementing the paper for my own learning purposes.
 
-# Describing the problem
+# Describing the variables
 - $p_i$: The price of the subscription the customer currently has.
 - $\alpha_i$: The probability we lose the customer (churn out).
 - $\gamma_i$: The susceptibility the customer has towards accepting an offer.
