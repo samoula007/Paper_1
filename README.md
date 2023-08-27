@@ -1,3 +1,27 @@
-- Implementing the following paper: https://arxiv.org/pdf/2308.12606.pdf
-- The objective is to maximize profits while minimizing customer loss. Given a set S of customers with cardinality n, then for each i-th customer, I have a set $[p_i, \alpha_i, \gamma_i, \beta_i]$. Now, p represents the monthly top-up of a customer i; $\alpha$ represents the churn out probability of a customer i; $\gamma$ represents the acceptance rate of a customer i for a certain offer; $\beta$ represents the probability the customer accepts an offer, that is, for any customer i, $\beta_i = 1 - \exp(\gamma*x_i)$. Given the set of offers $\delta$, where each element $\delta_j$ up to k represents the set of k offers we have, then $x_i$ is defined by the summation of 0 to k of $d_j * x_{i,j}$. A corollary of this is that the total number of offers we have, denoted k, is the cardinality of the set delta. Furthermore, the total budget W we have is the sum of j up to k of $\delta_j * n_j$, where n is the number of customers for which the offer $delta_j$ is proposed. Finally, the expected revenue of a customer i is represented by the function $f(p_i, \alpha_i, \gamma_i, \beta_i)$. More details on f(args) and the Integer Program in the paper, as well as on how to implement it via a greedy algorithm.
+# General
+- Attempt to implement the following paper: https://arxiv.org/pdf/2308.12606.pdf
 - I am not affiliated with the authors of the paper, nor do I claim any rights to the paper. I am simply implementing the paper for my own learning purposes.
+
+# Describing the problem
+- $p_i$: The price of the subscription the customer currently has
+- $\alpha_i$: The probability we lose the customer (churn out)
+- $\gamma_i$: The susceptibility the customer has towards accepting an offer
+- $\beta_i$: The probability a customer accepts the offer.
+    - $\beta = 1 - e^{-\gamma x_i}$ 
+    - $x_i$ refers to $\delta \cdot x$, which is defined below
+- $x_i$: A list of vectors $\in \{0,1\}$ such that $x = [x_1,x_2,...,x_k]$, and exactly one element of $x$ has value 1
+- $\delta_i$: A list of positive real-valued denominations representing offers such that $\delta = [\delta_1,\delta_2,...,\delta_k]$
+    - Each offer $\delta_j$ has a limited supply $n_j$
+    - The budget allocated to an offer is $w_j = \delta_j n_j$
+    - The total number of offers $K = \sum_{j\geq0}n_j$
+    - The total budget $W= \sum_{j\geq0}w_j$
+- $\delta \cdot x$: The value of the offer $\delta_i$ assigned to a customer by multiplying the two sets, since only one value $x_i$ of the set $x$ is nonzero. It is essentially assigning a value $x_i$ to the customer i from the set of offers $\delta$.
+- $f(\delta\cdot x_i, \alpha_i,\gamma_i,p_i)$: Simplified to $f(\omega_i)$, is the expected value of a customer
+    - The total expected optimized value is given by $\sum_{i\geq0}f(\omega_i)$, and our goal is to optimize this value
+
+# Algorithm
+- Greedily maximize f(args)
+
+# Uncertainties 
+- Maybe we can represent $\gamma_i$ with a poisson distribution
+- Not sure how to model $\alpha_i$ given customer data
