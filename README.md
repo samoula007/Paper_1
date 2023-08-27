@@ -33,5 +33,5 @@
 The following points are only related to my understanding of the paper, and can be ignored during the implementation.
 - Maybe we can represent $\gamma_i$ with a poisson distribution.
 - Not sure how to model $\alpha_i$ given customer data.
-- Note that I implement the paper without modification. However, in my opinion, if we want to speed up the algorithm, one thing we could do is to apply the secretary problem to the algorithm (in the case of $\delta_i\cdot x_i$). The solution will be suboptimal in roughly $1 - {1\over e}$ cases, which is quite signifiant, but at the cost of running faster.
+- Note that I implement the paper without modification of the original authors' intention (hopefully). However, in my opinion, if we want to speed up the algorithm, one thing we could do is to apply the secretary problem to the algorithm (in the case of $\delta_i\cdot x_i$). The solution will be suboptimal in roughly $1 - {1\over e}$ cases, which is quite signifiant, but at the cost of running faster, especially in the case where the number of customers and offers is very large.
     - I might just implement both algorithms and compare the performance?
