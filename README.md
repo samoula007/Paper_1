@@ -20,7 +20,7 @@
     - The total expected optimized value is given by $\sum_{i\geq0}f(\omega_i)$, and our goal is to optimize this value
 
 # Algorithm
-- Greedily maximize f(args)
+- Greedily maximize f($\omega$)
 
 # Uncertainties 
 - Maybe we can represent $\gamma_i$ with a poisson distribution
