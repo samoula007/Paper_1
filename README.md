@@ -13,7 +13,7 @@
     - The total number of offers $K = \sum_{j\geq0}n_j$.
     - The total budget $W= \sum_{j\geq0}w_j$.
     - Note that the size of $\delta_i$ varies depending on the customer, as there may be offers not available anymore due to supply limitations. Of course, the same can be said on the size of $x_i$ as a corollary.
-- $\delta_i \cdot x_i$: The dot product of $x_i$ and $\delta_i$. It is essentially assigning a value $x_i$ to the customer from the set of offers $\delta$.
+- $\delta_i \cdot x_i$: The dot product of $x_i$ and $\delta_i$. It is essentially assigning an offer to the customer from the set of offers, as exactly only one element $\in x_i$ holds value 1.
 - $\beta_i$: The probability a customer accepts the offer.
     - $\beta_i = 1 - e^{-\gamma_i(\delta_i \cdot x_i)}$
 - $f(\delta_i\cdot x_i, \alpha_i,\gamma_i,p_i)$: Simplified to $f(\Omega_i)$, is the expected value of a customer.
