@@ -17,7 +17,7 @@
 - $\beta_i$: The probability a customer accepts the offer.
     - $\beta_i = 1 - e^{-\gamma_i(\delta_i \cdot x_i)}$
 - $f(\delta_i\cdot x_i, \alpha_i,\gamma_i,p_i)$: Simplified to $f(\Omega_i)$, is the expected value of a customer.
-    - $f(\delta_i\cdot x_i, \alpha_i,\gamma_i,p_i) = \beta_i(p_i-\delta_i\cdot x_i) + (1-\beta_i)(1-\alpha_i)p_i$
+    - $f(\Omega_i) = \beta_i(p_i-\delta_i\cdot x_i) + (1-\beta_i)(1-\alpha_i)p_i$
     - The total expected optimized value is given by $\sum_{i\geq0}f(\Omega_i)$, and our goal is to optimize this value.
     - Note that $\beta_i$ is not input to the function, as it can be computed from the other arguments.
 
