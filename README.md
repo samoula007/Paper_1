@@ -1,5 +1,5 @@
 # General
-- Attempt to implement the following paper: https://arxiv.org/pdf/2308.12606.pdf
+- Attempting to implement the following paper: https://arxiv.org/pdf/2308.12606.pdf
 - I am not affiliated with the authors of the paper, nor do I claim any rights to the paper. I am simply implementing the paper for my own learning purposes.
 
 # Describing the problem
@@ -23,8 +23,9 @@
 
 # Algorithm
 - Greedily maximize f($\Omega$):
-    1. For each customer, we compute $f(\Omega_i)$ and select the offer that maximizes it.
-    2. We assign the settings that maximize $f(\Omega_i)$ for each i, and then decrement the number of offers for each offer used on a customer.
+    1. For each offer
+        1. For each customer, we compute $f(\Omega_i)$ and select the offer that maximizes it.
+        2. We assign the settings that maximize $f(\Omega_i)$ for each i, and then decrement the number of offers for each offer used on a customer.
 - Structure
     1. What datastruct? How save offer?
 
