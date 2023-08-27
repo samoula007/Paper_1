@@ -22,12 +22,25 @@
     - Note that $\beta_i$ is not input to the function, as it can be computed from the other arguments.
 
 # Algorithm
-- Greedily maximize f($\Omega$):
+- Structures
+    - Construct $k$ max priority queues $Q_j$:
+        - Each offer $j$ has a corresponding max priority queue $Q_j$ that contains the values $f(\Omega_i)$ of each customer
+        - We have k such queues, namely $Q_1,Q_2,...,Q_k$.
+        - Each queue is implemented using a binary heap (complete binary tree stored in an array).
+        - The max value of the queue $Q_j$ is at the root of the heap.
+    - Construct an array L of size k:
+        - It references the head of each $Q_j$.
+        - To find the max value fast.
+    - Construct a lookup table T:
+        - To delete an element from k priority queues efficiently.
+        - It has size $n\times k$.
+        - Each element references the place of a subscriber $i$ in each $Q_j$.
+- Process: Greedily maximize f($\Omega$):
     1. For each offer
         1. For each customer, we compute $f(\Omega_i)$ and select the offer that maximizes it.
         2. We assign the settings that maximize $f(\Omega_i)$ for each i, and then decrement the number of offers for each offer used on a customer.
-- Structure
-    1. What datastruct? How save offer?
+- Time complexity, Space complexity, and Optimality of the solution
+    - Refer to the corresponding sections of the paper.
 
 
 # Uncertainties 
@@ -36,3 +49,4 @@
 - Not sure how to model $\alpha_i$ given customer data.
 - Note that I implement the paper without modification of the original authors' intention (hopefully). However, in my opinion, if we want to speed up the algorithm, one thing we could do is to apply the secretary problem to the algorithm (in the case of $\delta_i\cdot x_i$). The solution will be suboptimal in roughly $1 - {1\over e}$ cases, which is quite signifiant, but at the cost of running faster, especially in the case where the number of customers and offers is very large.
     - I might just implement both algorithms and compare the performance?
+- Maybe try to find opportunities where such an algorithm can be tried in a different context, where the data is more available than in the case for which the problem has been designed.
