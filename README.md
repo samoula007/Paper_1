@@ -7,8 +7,7 @@
 - $\alpha_i$: The probability we lose the customer (churn out).
 - $\gamma_i$: The susceptibility the customer has towards accepting an offer.
 - $\beta_i$: The probability a customer accepts the offer.
-    - $\beta_i = 1 - e^{-\gamma_i x_i}$.
-    - $x_i$ refers to $\delta \cdot x$, which is defined below.
+    - $\beta_i = 1 - e^{-\gamma_i(\delta_i \cdot x_i)}$
 - $x_i$: A list of vectors $\in \{0,1\}$ such that $x_i = [x_1,x_2,...,x_k]$, and exactly one element of $x_i$ has value 1.
 - $\delta_i$: A list of positive real-valued denominations representing offers available such that $\delta_i = [\delta_1,\delta_2,...,\delta_k]$.
     - Each offer $\delta_{i,j}$ has a limited supply $n_j$.
