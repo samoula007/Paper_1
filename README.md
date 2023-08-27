@@ -17,18 +17,21 @@
 - $\beta_i$: The probability a customer accepts the offer.
     - $\beta_i = 1 - e^{-\gamma_i(\delta_i \cdot x_i)}$
 - $f(\delta_i\cdot x_i, \alpha_i,\gamma_i,p_i)$: Simplified to $f(\Omega_i)$, is the expected value of a customer.
+    - $f(\delta_i\cdot x_i, \alpha_i,\gamma_i,p_i) = \beta_i(p_i-\delta_i\cdot x_i) + (1-\beta_i)(1-\alpha_i)p_i$
     - The total expected optimized value is given by $\sum_{i\geq0}f(\Omega_i)$, and our goal is to optimize this value.
     - Note that $\beta_i$ is not input to the function, as it can be computed from the other arguments.
 
 # Algorithm
 - Greedily maximize f($\Omega$):
     1. For each customer, we compute $f(\Omega_i)$ and select the offer that maximizes it.
-    2. We assign the settings that maximize $f(\Omega_i)$ for each i, decrement the number of offers for each offer used on a customer.
-    - What datastruct? How save offer?
+    2. We assign the settings that maximize $f(\Omega_i)$ for each i, and then decrement the number of offers for each offer used on a customer.
+- Structure
+    1. What datastruct? How save offer?
 
 
 # Uncertainties 
 The following points are only related to my understanding of the paper, and can be ignored during the implementation.
 - Maybe we can represent $\gamma_i$ with a poisson distribution.
 - Not sure how to model $\alpha_i$ given customer data.
-- Note that I implement the paper without modification. However, in my opinion, if we want to speed up the algorithm, one thing we could do is to apply the secretary problem to the algorithm (in the case of $\delta_i\cdot x_i$). The solution will be suboptimal in roughly $1 - {1/\over e}$ cases, which is quite signifiant, but at the cost of running faster. I might just implement both algorithms and compare the performance?
+- Note that I implement the paper without modification. However, in my opinion, if we want to speed up the algorithm, one thing we could do is to apply the secretary problem to the algorithm (in the case of $\delta_i\cdot x_i$). The solution will be suboptimal in roughly $1 - {1\over e}$ cases, which is quite signifiant, but at the cost of running faster.
+    - I might just implement both algorithms and compare the performance?
