@@ -36,7 +36,7 @@
     - Each element references the place of a subscriber $i$ in each $Q_j$.
     - To delete an element from k priority queues efficiently.
 # Algorithm
-1. <mark>TODO</mark>
+1. <span style="background-color: #FFFF00">TODO</span>
 # Time Complexity, Space Complexity, Solution Optimality
 - Refer to the corresponding sections of the paper.
 ---
