@@ -21,21 +21,6 @@
     - The total expected optimized value is given by $\sum_{i\geq0}f(\Omega_i)$, and our goal is to optimize this value.
     - Note that $\beta_i$ is not input to the function, as it can be computed from the other arguments.
 ---
-# Structures
-- Construct $k$ max priority queues $Q_j$
-    - Each offer $j$ has a corresponding max priority queue $Q_j$ that contains the values $f(\Omega_i)$ of each customer
-    - We have k such queues, namely $Q_1,Q_2,...,Q_k$.
-    - Each queue is implemented using a binary heap (complete binary tree stored in an array).
-    - The max value of the queue $Q_j$ is at the root of the heap.
-- Construct an array L
-    - It has size k.
-    - It references the head of each $Q_j$.
-    - To find the max value fast.
-- Construct a lookup table T
-    - It has size $n\times k$.
-    - Each element references the place of a subscriber $i$ in each $Q_j$.
-    - To delete an element from k priority queues efficiently.
-# Algorithm
 - Input
     - GreedOffer $(\alpha[1,...,n], \gamma[1,...,n], p[1,...,n])$
         - $e_{\alpha} \in \alpha$: float
@@ -48,24 +33,34 @@
 - Output
     - A list of $(i,j)$ pairs, where $i$ is the customer, and $j$ is the offer.
         - $(i,j)$: (int, int)
+# Algorithm
 1. Initialize the set of subscribers $S$
     - $S = [1,2,...,n]$
 2. Initialize the answer set $A$
     - $A = []$
-3. Construct the priority queues
-    - $Q_1, Q_2,...,Q_k$
-4. Construct the lookup table $T$
-5. Construct the array $L$
+3. Construct $k$ priority queues
+    - $Q = [Q_1, Q_2,...,Q_k]$
+    - Each offer $j$ has a corresponding max priority queue $Q_j$ that contains the values $f(\Omega_i)$ of each customer
+    - Each queue is implemented using a binary heap (complete binary tree stored in an array).
+    - The max value of the queue $Q_j$ is at the root of the heap.
+4. Construct a lookup table $T$
+    - It has size $n\times k$.
+    - Each element references the place of a subscriber $i$ in each $Q_j$.
+    - To delete an element from k priority queues efficiently.
+5. Construct an array $L$
+    - It has size $k$.
+    - It references the head of each $Q_j$.
+    - To find the max value fast.
 6. While $K>0$ and $S\neq\emptyset$, where $K$ is the total number of offers
-    - Find the pair $(i,j)$ such that $f(\Omega_i)$ is the max value in $Q_j$.
-    - Append it to $A$.
-    - Remove the customer $i$ from $S$.
-    - Remove the customer $i$ from all queues.
-    - Update the array $L$.
-    - Update the lookup table $T$.
-    - Update $K$.
-    - Update the total number of offers for offer type $j$.
-    - If there are no more offers of type $j$, remove $Q_j$ from the set of queues.
+    1. Find the pair $(i,j)$ such that $f(\Omega_i)$ is the max value in $Q_j$.
+    2. Append it to $A$.
+    3. Remove the customer $i$ from $S$.
+    4. Remove the customer $i$ from all queues.
+    5. Update the array $L$.
+    6. Update the lookup table $T$.
+    7. Update $K$.
+    8. Update the total number of offers for offer type $j$.
+    9. If there are no more offers of type $j$, remove $Q_j$ from the set of queues.
 7. Return $A$
 
 # Time Complexity, Space Complexity, Solution Optimality
