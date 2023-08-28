@@ -27,11 +27,10 @@
         - $e_{\alpha} \in \alpha$: float
         - $e_{\gamma} \in \gamma$: float
         - $e_{p} \in p$: float
-        - size of any of the arrays is $n$.
+        - Size of any of the arrays is $n$.
     - Offers $\delta[1,...,k]$ with limited supply $[1,...,k]$.
         - $e_{\delta} \in \delta$: float
         - $e_{n} \in n$: int
-        - Constant set, so not input to the function.
 - Output
     - A list of $(i,j)$ pairs, where $i$ is the customer, and $j$ is the offer.
         - $(i,j)$: (int, int)
