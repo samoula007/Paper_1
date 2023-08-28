@@ -23,11 +23,12 @@
 ---
 # Algorithm I/O
 - Input
-    - $[\alpha[1,...,n], \gamma[1,...,n], p[1,...,n]]$
+    - $\alpha[1,...,n], \gamma[1,...,n], p[1,...,n]$
         - $e_{\alpha} \in \alpha$: float
         - $e_{\gamma} \in \gamma$: float
         - $e_{p} \in p$: float
-    - Offers $\delta[1,...,k]$ with limited supply $n[1,...,k]$.
+        - size of any of the arrays is $n$.
+    - Offers $\delta[1,...,k]$ with limited supply $[1,...,k]$.
         - $e_{\delta} \in \delta$: float
         - $e_{n} \in n$: int
         - Constant set, so not input to the function.
