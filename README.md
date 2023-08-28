@@ -36,19 +36,17 @@
     - Each element references the place of a subscriber $i$ in each $Q_j$.
     - To delete an element from k priority queues efficiently.
 # Algorithm
-1. Initialize the set of subscribers
-    - S = [1,2,...,n]
-2. Initialize the answer set A
-    - A = []
+1. Initialize the set of subscribers $S$
+    - $S = [1,2,...,n]$
+2. Initialize the answer set $A$
+    - $A = []$
 3. Construct the priority queues
     - $Q_1, Q_2,...,Q_k$
-4. Construct the lookup table
-    - T
-5. Construct the array L
-    - L
-6. While $K>0$ and $S\neq\emptyset$, where K is the total number of offers, and S is the set of subscribers
-    - Find the pair (i,j) such that $f(\Omega_i)$ is the max value in $Q_j$.
-    - Append it to A.
+4. Construct the lookup table $T$
+5. Construct the array $L$
+6. While $K>0$ and $S\neq\emptyset$, where $K$ is the total number of offers
+    - Find the pair $(i,j)$ such that $f(\Omega_i)$ is the max value in $Q_j$.
+    - Append it to $A$.
     - Remove the customer $i$ from $S$.
     - Remove the customer $i$ from all queues.
     - Update the array $L$.
@@ -56,7 +54,7 @@
     - Update $K$.
     - Update the total number of offers for offer type $j$.
     - If there are no more offers of type $j$, remove $Q_j$ from the set of queues.
-7. Return A
+7. Return $A$
 
 # Time Complexity, Space Complexity, Solution Optimality
 - Refer to the corresponding sections of the paper.
