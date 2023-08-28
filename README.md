@@ -21,8 +21,7 @@
     - The total expected optimized value is given by $\sum_{i\geq0}f(\Omega_i)$, and our goal is to optimize this value.
     - Note that $\beta_i$ is not input to the function, as it can be computed from the other arguments.
 
-# Algorithm
-## Structures
+# Structures
     - Construct $k$ max priority queues $Q_j$:
         - Each offer $j$ has a corresponding max priority queue $Q_j$ that contains the values $f(\Omega_i)$ of each customer
         - We have k such queues, namely $Q_1,Q_2,...,Q_k$.
@@ -35,11 +34,11 @@
         - To delete an element from k priority queues efficiently.
         - It has size $n\times k$.
         - Each element references the place of a subscriber $i$ in each $Q_j$.
-## Process: Greedily maximize f($\Omega$)
+# Algorithm
     1. For each offer
         1. For each customer, we compute $f(\Omega_i)$ and select the offer that maximizes it.
         2. We assign the settings that maximize $f(\Omega_i)$ for each i, and then decrement the number of offers for each offer used on a customer.
-## Time complexity, Space complexity, and Optimality of the solution
+# Time complexity, Space complexity, and Optimality of the solution
     - Refer to the corresponding sections of the paper.
 
 
