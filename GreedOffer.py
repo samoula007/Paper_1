@@ -114,22 +114,22 @@ def extract_field(filename, column_index):
     return result    
 
 #extract fields as list of strings
-a_s = extract_field('data/customers.csv', 0)
-g_s = extract_field('data/customers.csv', 1)
-price_s = extract_field('data/customers.csv', 2)
+price_s = extract_field('data/customers.csv', 0)
+a_s = extract_field('data/customers.csv', 1)
+g_s = extract_field('data/customers.csv', 2)
 offers_s = extract_field('data/offers.csv', 0)
 supply_s = extract_field('data/offers.csv', 1)
 
 #convert the strings to numbers
-a = [float(i) for i in a_s]
-g = [float(i) for i in g_s]
-price = [float(i) for i in price_s]
-offers = [float(i) for i in offers_s]
+p = [float(i) for i in price_s]
+alpha = [float(i) for i in a_s]
+gamma = [float(i) for i in g_s]
+delta = [float(i) for i in offers_s]
 supply = [int(i) for i in supply_s]
-n = len(a)
+n = len(alpha)
 
 #call the naive implementation
-A = greedOffer(a, g, price, offers, supply, n)
+A = greedOffer(alpha, gamma, p, delta, supply, n)
 
 #now time to debug
 print (A)
