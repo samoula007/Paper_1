@@ -22,18 +22,18 @@
     - Note that $\beta_i$ is not input to the function, as it can be computed from the other arguments.
 
 # Structures
-    - Construct $k$ max priority queues $Q_j$:
-        - Each offer $j$ has a corresponding max priority queue $Q_j$ that contains the values $f(\Omega_i)$ of each customer
-        - We have k such queues, namely $Q_1,Q_2,...,Q_k$.
-        - Each queue is implemented using a binary heap (complete binary tree stored in an array).
-        - The max value of the queue $Q_j$ is at the root of the heap.
-    - Construct an array L of size k:
-        - It references the head of each $Q_j$.
-        - To find the max value fast.
-    - Construct a lookup table T:
-        - To delete an element from k priority queues efficiently.
-        - It has size $n\times k$.
-        - Each element references the place of a subscriber $i$ in each $Q_j$.
+- Construct $k$ max priority queues $Q_j$:
+    - Each offer $j$ has a corresponding max priority queue $Q_j$ that contains the values $f(\Omega_i)$ of each customer
+    - We have k such queues, namely $Q_1,Q_2,...,Q_k$.
+    - Each queue is implemented using a binary heap (complete binary tree stored in an array).
+    - The max value of the queue $Q_j$ is at the root of the heap.
+- Construct an array L of size k:
+    - It references the head of each $Q_j$.
+    - To find the max value fast.
+- Construct a lookup table T:
+    - To delete an element from k priority queues efficiently.
+    - It has size $n\times k$.
+    - Each element references the place of a subscriber $i$ in each $Q_j$.
 # Algorithm
     1. For each offer
         1. For each customer, we compute $f(\Omega_i)$ and select the offer that maximizes it.
