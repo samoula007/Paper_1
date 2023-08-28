@@ -14,8 +14,7 @@ def f(delta_i, alpha_i, gamma_i, p_i):
     #compute the expected profit
     return beta_i * (p_i - delta_i) + (1 - beta_i)*(1 - alpha_i) * p_i
 
-# NOTE: inputs of the function are probably comming from a CSV
-# NOTE: I will input offer list to the function as well as the supply list
+# NOTE: Contrary to the author's pseudocode, I will additionally input delta,supply,n to the data
 def greedOffer( alpha, gamma, p, delta, supply, n):
     """
     :param alpha: list of floats, churn out prob for each subscriber
@@ -98,8 +97,9 @@ def greedOffer( alpha, gamma, p, delta, supply, n):
     #7
     #Return the solution set A
     return A
-            
 
+#TODO: Test the code        
+# Need to create the csv to list converter in order to test the code
 
     
         
