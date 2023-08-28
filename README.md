@@ -12,7 +12,7 @@
     - The budget allocated to an offer is $w_j = \delta_{i,j} n_j$.
     - The total number of offers $K = \sum_{j\geq0}n_j$.
     - The total budget $W= \sum_{j\geq0}w_j$.
-    - Note that the size of $\delta_i$ varies depending on the customer, as there may be offers not available anymore due to supply limitations. Of course, the same can be said on the size of $x_i$ as a corollary.
+    - Note that $\delta$ is actually a constant set, as it does not change.
 - $\delta_i \cdot x_i$: The dot product of $x_i$ and $\delta_i$. It is essentially assigning an offer to the customer from the set of offers, as exactly only one element $\in x_i$ holds value 1.
 - $\beta_i$: The probability a customer accepts the offer.
     - $\beta_i = 1 - e^{-\gamma_i(\delta_i \cdot x_i)}$
@@ -36,9 +36,7 @@
     - Each element references the place of a subscriber $i$ in each $Q_j$.
     - To delete an element from k priority queues efficiently.
 # Algorithm
-1. For each offer
-    1. For each customer, we compute $f(\Omega_i)$ and select the offer that maximizes it.
-    2. We assign the settings that maximize $f(\Omega_i)$ for each i, and then decrement the number of offers for each offer used on a customer.
+1. ==TODO==
 # Time Complexity, Space Complexity, Solution Optimality
 - Refer to the corresponding sections of the paper.
 ---
