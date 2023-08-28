@@ -21,6 +21,7 @@
     - The total expected optimized value is given by $\sum_{i\geq0}f(\Omega_i)$, and our goal is to optimize this value.
     - Note that $\beta_i$ is not input to the function, as it can be computed from the other arguments.
 ---
+# Algorithm I/O
 - Input
     - GreedOffer $(\alpha[1,...,n], \gamma[1,...,n], p[1,...,n])$
         - $e_{\alpha} \in \alpha$: float
@@ -40,7 +41,7 @@
     - $A = []$
 3. Construct $k$ priority queues
     - $Q = [Q_1, Q_2,...,Q_k]$
-    - Each offer $j$ has a corresponding max priority queue $Q_j$ that contains the values $f(\Omega_i)$ of each customer
+    - Each offer $j$ has a corresponding max priority queue $Q_j$ that contains the values $f(\Omega_i)$ of each customer.
     - Each queue is implemented using a binary heap (complete binary tree stored in an array).
     - The max value of the queue $Q_j$ is at the root of the heap.
 4. Construct a lookup table $T$
