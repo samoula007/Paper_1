@@ -37,7 +37,7 @@
     - To delete an element from k priority queues efficiently.
 # Algorithm
 - Input
-    - GreedOffer$(\alpha[1,...,n], \gamma[1,...,n], p[1,...,n])$
+    - GreedOffer $(\alpha[1,...,n], \gamma[1,...,n], p[1,...,n])$
         - $e_{\alpha} \in \alpha$: float
         - $e_{\gamma} \in \gamma$: float
         - $e_{p} \in p$: float
