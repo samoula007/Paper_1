@@ -1,5 +1,6 @@
 import heapq
 import math
+import csv
 
 def f(delta_i, alpha_i, gamma_i, p_i):
     """
@@ -14,7 +15,7 @@ def f(delta_i, alpha_i, gamma_i, p_i):
     #compute the expected profit
     return beta_i * (p_i - delta_i) + (1 - beta_i)*(1 - alpha_i) * p_i
 
-# NOTE: Contrary to the author's pseudocode, I will additionally input delta,supply,n to the data
+# NOTE: Contrary to the authors' pseudocode, I will additionally input delta,supply,n to the data
 def greedOffer( alpha, gamma, p, delta, supply, n):
     """
     :param alpha: list of floats, churn out prob for each subscriber
@@ -49,7 +50,7 @@ def greedOffer( alpha, gamma, p, delta, supply, n):
     T = [ [0 for i in range(k)] for j in range(n)]
     for i in range(k):
         for j in range(n):
-            T[j][i] = Q[i].index((f(delta[i], alpha[j], gamma[j], p[j]), j))
+            T[j][i] = Q[i].index((-f(delta[i], alpha[j], gamma[j], p[j]), j))
     
     #5
     #Construct the array L of size k
@@ -88,7 +89,7 @@ def greedOffer( alpha, gamma, p, delta, supply, n):
         L[curr_j] = Q[curr_j][0][1]
         # Update the lookup table T
         for j in range(k):
-            T[curr_i][j] = Q[j].index((f(delta[j], alpha[curr_i], gamma[curr_i], p[curr_i]), curr_i))
+            T[curr_i][j] = Q[j].index((-f(delta[j], alpha[curr_i], gamma[curr_i], p[curr_i]), curr_i))
         # Update K and offer number
         supply[curr_j] -= 1
         # If there are no more offers of type j, remove Q_j from the set of queues.
@@ -97,9 +98,38 @@ def greedOffer( alpha, gamma, p, delta, supply, n):
     #7
     #Return the solution set A
     return A
+     
+############################################################################################################
+#Testing naive implementation
 
-#TODO: Test the code        
-# Need to create the csv to list converter in order to test the code
+# Converts a given field of the csv to a list
+def extract_field(filename, column_index):
+    result = []
+    with open(filename, 'r') as csvfile:
+        csv_reader = csv.reader(csvfile)
+        header = next(csv_reader)  # Read the header row
+        for row in csv_reader:
+            if len(row) > column_index:
+                result.append(row[column_index])
+    return result    
 
-    
-        
+#extract fields as list of strings
+a_s = extract_field('data/customers.csv', 0)
+g_s = extract_field('data/customers.csv', 1)
+price_s = extract_field('data/customers.csv', 2)
+offers_s = extract_field('data/offers.csv', 0)
+supply_s = extract_field('data/offers.csv', 1)
+
+#convert the strings to numbers
+a = [float(i) for i in a_s]
+g = [float(i) for i in g_s]
+price = [float(i) for i in price_s]
+offers = [float(i) for i in offers_s]
+supply = [int(i) for i in supply_s]
+n = len(a)
+
+#call the naive implementation
+A = greedOffer(a, g, price, offers, supply, n)
+
+#now time to debug
+print (A)
