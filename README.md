@@ -33,8 +33,8 @@
     - To find the max value fast.
 - Construct a lookup table T
     - It has size $n\times k$.
-    - To delete an element from k priority queues efficiently.
     - Each element references the place of a subscriber $i$ in each $Q_j$.
+    - To delete an element from k priority queues efficiently.
 # Algorithm
 1. For each offer
     1. For each customer, we compute $f(\Omega_i)$ and select the offer that maximizes it.
