@@ -73,10 +73,9 @@
 ---
 # Uncertainties 
 *The following points are only related to my understanding of the paper, and can be ignored during the implementation.*
-- Maybe we can represent $\gamma_i$ with a poisson distribution.
-- Not sure how to model $\alpha_i$ given customer data.
+- For now, I know my testing data is wrong concerning the $\gamma$ values. It needs to be a list that maps a probability assigned to each offer. However, for testing purposes, let's assume the value is the same for all offers. It will be easy to change later, once the code is bug free.
+- Maybe we can represent $\gamma_i$ with a poisson distribution. Currently represented totally at random.
+- Not sure how to model $\alpha_i$ given customer data. Currently represented totally at random.
 - Note that I implement the paper without modification of the original authors' intention (hopefully). However, in my opinion, if we want to speed up the algorithm, one thing we could do is to apply the secretary problem to the algorithm (in the case of $\delta_i\cdot x_i$). The solution will be suboptimal in roughly $1 - {1\over e}$ cases, which is quite signifiant, but at the cost of running faster, especially in the case where the number of customers and offers is very large.
     - I might just implement both algorithms and compare the performance?
 - Maybe try to find opportunities where such an algorithm can be tried in a different context, where the data is more available than in the case for which the problem has been designed.
-- Data input from CSV file most likely. How delta is input is still unclear, but might just be in an independant CSV file, which is the most likely case.
-- Should I include toy data to test the algorithm? Probably.
