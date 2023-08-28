@@ -27,12 +27,13 @@
     - We have k such queues, namely $Q_1,Q_2,...,Q_k$.
     - Each queue is implemented using a binary heap (complete binary tree stored in an array).
     - The max value of the queue $Q_j$ is at the root of the heap.
-- Construct an array L of size k
+- Construct an array L
+    - It has size k.
     - It references the head of each $Q_j$.
     - To find the max value fast.
 - Construct a lookup table T
-    - To delete an element from k priority queues efficiently.
     - It has size $n\times k$.
+    - To delete an element from k priority queues efficiently.
     - Each element references the place of a subscriber $i$ in each $Q_j$.
 # Algorithm
 1. For each offer
