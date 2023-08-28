@@ -39,7 +39,7 @@
 1. For each offer
     1. For each customer, we compute $f(\Omega_i)$ and select the offer that maximizes it.
     2. We assign the settings that maximize $f(\Omega_i)$ for each i, and then decrement the number of offers for each offer used on a customer.
-# Time complexity, Space complexity, and Optimality of the solution
+# Time Complexity, Space Complexity, Solution Optimality
 - Refer to the corresponding sections of the paper.
 ---
 # Uncertainties 
