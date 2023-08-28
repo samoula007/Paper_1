@@ -23,7 +23,7 @@
 ---
 # Algorithm I/O
 - Input
-    - GreedOffer $(\alpha[1,...,n], \gamma[1,...,n], p[1,...,n])$
+    - $[\alpha[1,...,n], \gamma[1,...,n], p[1,...,n]]$
         - $e_{\alpha} \in \alpha$: float
         - $e_{\gamma} \in \gamma$: float
         - $e_{p} \in p$: float
