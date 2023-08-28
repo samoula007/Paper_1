@@ -36,6 +36,18 @@
     - Each element references the place of a subscriber $i$ in each $Q_j$.
     - To delete an element from k priority queues efficiently.
 # Algorithm
+- Input
+    - $GreedOffer(\alpha[1,...,n], \gamma[1,...,n], p[1,...,n])$
+        - $e_{\alpha} \in \alpha$: float
+        - $e_{\gamma} \in \gamma$: float
+        - $e_{p} \in p$: float
+    - Offers $\delta[1,...,k]$ with limited supply $n[1,...,k]$.
+        - $e_{\delta} \in \delta$: float
+        - $e_{n} \in n$: int
+        - Constant set, so not input to the function.
+- Output
+    - A list of $(i,j)$ pairs, where $i$ is the customer, and $j$ is the offer.
+        - $(i,j)$: (int, int)
 1. Initialize the set of subscribers $S$
     - $S = [1,2,...,n]$
 2. Initialize the answer set $A$
@@ -66,3 +78,5 @@
 - Note that I implement the paper without modification of the original authors' intention (hopefully). However, in my opinion, if we want to speed up the algorithm, one thing we could do is to apply the secretary problem to the algorithm (in the case of $\delta_i\cdot x_i$). The solution will be suboptimal in roughly $1 - {1\over e}$ cases, which is quite signifiant, but at the cost of running faster, especially in the case where the number of customers and offers is very large.
     - I might just implement both algorithms and compare the performance?
 - Maybe try to find opportunities where such an algorithm can be tried in a different context, where the data is more available than in the case for which the problem has been designed.
+- Data input from CSV file most likely. How delta is input is still unclear, but might just be in an independant CSV file, which is the most likely case.
+- Should I include toy data to test the algorithm? Probably.
