@@ -41,16 +41,16 @@ def greedOffer( alpha, gamma, p, delta, supply, n):
     Q = [ [] for i in range(k)] #The queue of queues Q_j
     for i in range(k):
         for j in range(n):
-            priority = -f(delta[i], alpha[j], gamma[j], p[j]) # negate the prio for maxprio
+            priority = f(delta[i], alpha[j], gamma[j], p[j])
             heapq.heappush(Q[i], (priority, j))
-    
+
     #4
     #Construct the lookup table T of size n x k
     #Each element of T references the position of a subscriber i in each queue j
     T = [ [0 for i in range(k)] for j in range(n)]
     for i in range(k):
         for j in range(n):
-            T[j][i] = Q[i].index((-f(delta[i], alpha[j], gamma[j], p[j]), j))
+            T[j][i] = Q[i].index((f(delta[i], alpha[j], gamma[j], p[j]), j))
     
     #5
     #Construct the array L of size k
@@ -67,38 +67,49 @@ def greedOffer( alpha, gamma, p, delta, supply, n):
         curr_j = -1
         curr_i = -1
         # find the pair (i,j) with the highest priority
-        for i in S:
-            for j in range(k):
-                if supply[j] > 0:  # There are available offers of type j
-                    priority = -f(delta[j], alpha[i], gamma[i], p[i])
-                    if priority > top_prio:
-                        top_prio = priority
-                        curr_j = j
-                        curr_i = i
-        if curr_j == -1:  # No more offers available
-            break
+        # iterate through Q, and the queue with head of highest value is the one with highest prio 
+        # the pair (i,j) is then given by the current j (representing offer) and the head of the queue (representing subscriber)
+        for j in range(k):
+            if len(Q[j]) == 0:
+                continue
+            largest = heapq.nlargest(1,Q[j])[0]
+            if L[j] != -1 and largest[0] > top_prio:
+                top_prio = largest[0]
+                curr_j = j
+                curr_i = largest[1]
+
         # Append it to A
         A.append((curr_i, curr_j))
         # Remove the customer i from S
         S.remove(curr_i)
         # Remove the customer i from all queues
+        #the custommer number is the second element of the tuple in the queue
         for j in range(k):
-            if curr_i in Q[j]:
-                Q[j].remove(curr_i)
+            priority = f(delta[j], alpha[curr_i], gamma[curr_i], p[curr_i]) 
+            if (priority, curr_i) in Q[j]:
+                Q[j].remove((priority, curr_i))
+            
         # Update the array L
         L[curr_j] = Q[curr_j][0][1]
+
         # Update the lookup table T
         for j in range(k):
-            T[curr_i][j] = Q[j].index((-f(delta[j], alpha[curr_i], gamma[curr_i], p[curr_i]), curr_i))
+            for i in range(n):
+                priority = f(delta[j], alpha[i], gamma[i], p[i])
+                if (priority, i) in Q[j]:
+                    T[i][j] = Q[j].index((priority, i))
+
         # Update K and offer number
         supply[curr_j] -= 1
         # If there are no more offers of type j, remove Q_j from the set of queues.
+        #this is also probably shit
         if supply[curr_j] == 0:
             Q[curr_j] = []
     #7
     #Return the solution set A
     return A
      
+
 ############################################################################################################
 #Testing naive implementation
 
@@ -131,5 +142,4 @@ n = len(alpha)
 #call the naive implementation
 A = greedOffer(alpha, gamma, p, delta, supply, n)
 
-#now time to debug
 print (A)
