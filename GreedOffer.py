@@ -15,18 +15,17 @@ def f(delta_i, alpha_i, gamma_i, p_i):
     #compute the expected profit
     return beta_i * (p_i - delta_i) + (1 - beta_i)*(1 - alpha_i) * p_i
 
-# NOTE: Contrary to the authors' pseudocode, I will additionally input delta,supply,n to the data
-def greedOffer( alpha, gamma, p, delta, supply, n):
+# NOTE: Contrary to the authors' pseudocode, I will additionally input delta and supply to the data
+def greedOffer( alpha, gamma, p, delta, supply):
     """
     :param alpha: list of floats, churn out prob for each subscriber
     :param gamma: list of floats, susceptibility towards offer acceptance for each subscriber
     :param p: list of floats, monthly top-up amount for each subscriber
     :param delta: list of floats, cost of the offer for each offer
     :param supply: list of ints, supply of each offer
-    :param n: int, number of subscribers
     :return: list of tuples, the solution set A
     """
-
+    n = len(alpha)
     #1
     #Initialize the set of subscribers S
     S = [i for i in range(n)]
@@ -137,9 +136,11 @@ alpha = [float(i) for i in a_s]
 gamma = [float(i) for i in g_s]
 delta = [float(i) for i in offers_s]
 supply = [int(i) for i in supply_s]
-n = len(alpha)
 
 #call the naive implementation
-A = greedOffer(alpha, gamma, p, delta, supply, n)
+A = greedOffer(alpha, gamma, p, delta, supply)
 
 print (A)
+#need to compute the profit
+#need to check if the solution is feasible
+#build test suite for that?
