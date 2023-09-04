@@ -98,13 +98,15 @@ def greedOffer( alpha, gamma, p, delta, supply):
             T[j][customer] = i
 
     
-"""
+
     #5
     #Construct the array L of size k
     L = [0 for i in range(k)]
-    #Each element j of L is the head of each queue j in Q
+    #Each element j of L is the head (priority, customer) of each queue j in Q
+    for i in range(k):
+        L[i] = Q[i].getRoot()
     
-    
+"""  
     #6
     #While the total number of offers is > 0, and the set of subscribers is not empty
     while sum(supply) > 0 and len(S) > 0:
