@@ -88,16 +88,15 @@ def greedOffer( alpha, gamma, p, delta, supply):
 
     #4
     #Construct the lookup table T of size n x k
-    #Each element of T references the position of a subscriber i in each queue j
-    T = [ [0 for i in range(k)] for j in range(n)]
+    #T[i][j] is the position of customer i in queue j
+    T = [ [0 for i in range(n)] for j in range(k)]
     #Loop through the queues
     #whenever we see customer i for queue j, we update T[i][j] to the position of i in Q[j]
     for j in range(k):
         for i in range(n):
-            customer = Q[j].getRoot()[1]
+            customer = Q[j].heap[i][1]
             T[j][customer] = i
-    print(T)
-    
+
     
 """
     #5
